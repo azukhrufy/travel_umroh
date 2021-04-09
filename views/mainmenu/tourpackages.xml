@@ -81,6 +81,9 @@
                                         <field name="masa_berlaku" />
                                         <field name="gender" />
                                         <field name="tipe_kamar" />
+                                        <field name="mahram" />
+                                        <field name="imigrasi" />
+                                        <field name="umur" />
                                     </tree>
                                 </field>
                             </page>

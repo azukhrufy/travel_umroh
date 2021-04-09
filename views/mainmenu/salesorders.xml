@@ -47,6 +47,9 @@
                                 <field name="name"/>
                                 <field name="masa_berlaku"/>
                                 <field name="tipe_kamar" />
+                                <field name="mahram" />
+                                <field name="imigrasi" />
+                                <field name="umur" />
                                 <field name="photo" widget="image_1920" />
                             </tree>
                             <form>
@@ -61,6 +64,9 @@
                                     <field name="name" colspan="4"/>
                                     <field name="masa_berlaku"/>
                                     <field name="tipe_kamar" />
+                                    <field name="mahram" />
+                                    <field name="imigrasi" />
+                                    <field name="umur" />
                                     <field name="photo" widget="image"/>
                                 </group>
                             </form>

@@ -16,9 +16,12 @@
                     <field name="date_of_birth" />
                     <field name="blood_type" />
                     <field name="gender" />
+                    <field name="mahram" />
                     <field name="marital_status" />
                     <field name="clothes_size" />
                     <field name="education" />
+                    <field name="imigrasi" />
+                    <field name="umur" />
                 </tree>
             </field>
         </record>
@@ -72,6 +75,9 @@
                             <field name="blood_type" attrs="{'invisible': [('customer', '=', False)]}" />
                             <field name="marital_status" attrs="{'invisible': [('customer', '=', False)]}" />
                             <field name="education" attrs="{'invisible': [('customer', '=', False)]}" />
+                            <field name="mahram" />
+                            <field name="imigrasi" />
+                            <field name="umur" />
                         </group>
                     </group>
                 </xpath>

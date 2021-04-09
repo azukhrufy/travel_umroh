@@ -57,6 +57,10 @@ class JamaahXlsx(models.AbstractModel):
                 self.temp.append(person.pass_no)
                 self.temp.append(person.tgl_dibuat.strftime("%d/%b/%Y"))
                 self.temp.append(person.masa_berlaku.strftime("%d/%b/%Y"))
+                self.temp.append(person.imigrasi)
+                self.temp.append(person.umur)
+                self.temp.append(self.forroomtype(person.tipe_kamar))
+                self.temp.append(self.format_nulls(person.mahram))
                 
 
                 sheet.write(self.iter_y, self.iter_x - 1, self.count)
@@ -138,19 +142,19 @@ class JamaahXlsx(models.AbstractModel):
         else:
             return "Female"
 
-    # def format_nulls(self, line):
-    #     if not line:
-    #         return ""
-    #     elif line is int and line == 0:
-    #         return "-"
-    #     else:
-    #         return line
+    def format_nulls(self, line):
+        if not line:
+            return ""
+        elif line is int and line == 0:
+            return "-"
+        else:
+            return line
 
-    # def forroomtype(self, line):
-    #     if line == "d":
-    #         return "Double"
-    #     if line == "t":
-    #         return "Triple"
-    #     if line == "q":
-    #         return "Quad"
-    #     else: return "Single"
+    def forroomtype(self, line):
+        if line == "d":
+            return "Double"
+        if line == "t":
+            return "Triple"
+        if line == "q":
+            return "Quad"
+        else: return "Single"

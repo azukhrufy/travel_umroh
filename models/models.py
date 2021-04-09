@@ -21,6 +21,11 @@ class ResPartner(models.Model):
     masa_berlaku = fields.Date(string='Date of Expiry')
     
     
+    mahram = fields.Many2one('res.partner', string='Mahram', domain=[("customer", "=", "True")])
+    imigrasi = fields.Char(string='Imigrasi')
+    umur = fields.Integer(string='Umur')
+
+
     # scan document 
     ktp_scan = fields.Binary(string='Scan KTP')
     passport_scan = fields.Binary(string='Scan Passport')
@@ -116,6 +121,9 @@ class PaketPerjalanan(models.Model):
                         'masa_berlaku': x.partner_id.masa_berlaku,
                         'tgl_dibuat': x.partner_id.tgl_dibuat,
                         'partner_id': x.partner_id.id,
+                        'mahram': x.partner_id.mahram.name,
+                        'umur': x.partner_id.umur,
+                        'imigrasi' : x.partner_id.imigrasi,
                         'name': x.name,
                         'order_id': o.id,
                         'gender': x.partner_id.gender,
@@ -256,6 +264,11 @@ class PaketPesertaLine(models.Model):
     tgl_dibuat = fields.Date(string='Date Issued')
     masa_berlaku = fields.Date(string='Date of Expiry')
     
+    mahram = fields.Char(string='Mahram')
+    imigrasi = fields.Char(string='Imigrasi')
+    umur = fields.Integer(string='Umur')
+    
+    
 class HppLine(models.Model):
     _name = 'hpp.line'
     _description = 'Hpp Line'
@@ -340,6 +353,9 @@ class SalePassportLine(models.Model):
     no_identitas = fields.Char(string='No KTP', related="partner_id.no_identitas", readonly=True)
     date_of_birth = fields.Date(string='Tanggal Lahir', related="partner_id.date_of_birth", readonly=True)    
     place_of_birth = fields.Char(string='Tempat Lahir', related="partner_id.place_of_birth", readonly=True)
+    mahram = fields.Many2one('res.partner', string='Mahram', related="partner_id.mahram", readonly=True)
+    imigrasi = fields.Char(string='Imigrasi', related="partner_id.imigrasi", readonly=True)
+    umur = fields.Integer(string='Umur',related="partner_id.umur", readonly=True)
     
     
     # bagian passport jamaah 
