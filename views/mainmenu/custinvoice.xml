@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+         <record id="action_invoiced_form" model="ir.actions.act_window">
+            <field name="name">Fully Invoiced</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('invoice_status', '=', 'invoiced')]</field>
+            <field name="search_view_id" ref="sale.view_order_tree"/>
+        </record>
+    
+    </data>
+    
+
+</odoo>

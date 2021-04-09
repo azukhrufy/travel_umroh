@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="surat_jalan" name="surat_jalan">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div>
+                    <h2 class="text-center">DELIVERY ORDER</h2><br/>
+                    <table class="table" border="0">
+                        <tr>
+                            <td><strong>Customer</strong></td>
+                            <td><span t-field="o.partner_id.name"/></td>
+                            <td><strong>NO</strong></td>
+                            <td><span t-field="o.name"/></td>
+                            
+                        </tr>
+                        <tr>
+                            <td><strong>Address</strong></td>
+                            <td><span t-field="o.partner_id.street"/></td>
+                            <td><strong>Date</strong></td>
+                            <td><span t-field="o.scheduled_date"/></td>
+                        </tr>
+                        <tr colspan="2">
+                            <td><strong>Phone</strong></td>
+                            <td><span t-field="o.partner_id.phone"/></td>
+                            <td><strong> </strong></td>
+                            <td> </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered" style="table-layout:auto">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Product</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-center">UoM</th>
+                            </tr>
+                        </thead>
+                        <br/>
+                        <tbody>
+                            <t t-foreach="o.move_ids_without_package" t-as="l">
+                                <tr>
+                                    <td><span t-field="l.product_id"/></td>
+                                    <td><span t-field="l.product_qty"/></td>
+                                    <td>Unit(s)</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h4 class="text-center">Mengetahui</h4><br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h4 class="text-center">Administrator</h4><br/>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

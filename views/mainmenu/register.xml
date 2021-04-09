@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record model="ir.ui.view" id="view_travel_registration_tree">
+            <field name="name">res.partner.travel.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Registrasi Jamaah" class="o_res_partner">
+                    <field name="name" />
+                    <field name="no_identitas" />
+                    <field name="father_name" />
+                    <field name="mother_name" />
+                    <field name="place_of_birth" />
+                    <field name="date_of_birth" />
+                    <field name="blood_type" />
+                    <field name="gender" />
+                    <field name="marital_status" />
+                    <field name="clothes_size" />
+                    <field name="education" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_partner_form_umroh">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- menambahkan field setelah sheet group form bawaan customer -->
+
+                <!-- agar informasi scan document ditambilkan di bawah maka dipanggil terlebih dahulu -->
+                <xpath expr="//sheet/group" position="after">
+                    <group string="Scanned Document">
+                        <group>
+                            <field name="ktp_scan" widget="image" attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="passport_scan" widget="image"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            
+                        </group>
+                        <group>
+                            <field name="antigen_scan" widget="image"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                        </group>
+                    </group>
+                </xpath>
+
+                <!-- agar informasi passport ditambilkan di bawah maka dipanggil terlebih dahulu -->
+                <xpath expr="//sheet/group" position="after">
+                    <group string="Passport Information">
+                        <group>
+                            <field name="pass_no"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="masa_berlaku"  attrs="{'invisible': [('customer', '=', False)]}" />
+                            <field name="name"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="tgl_dibuat"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                        </group>
+                    </group>
+                </xpath>
+
+                <!-- informasi tambahan seperti ktp dll  -->
+                <xpath expr="//sheet/group" position="after">
+                    <group string="Additional Information">
+                        <group>
+                            <field name="no_identitas"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="gender"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="father_name"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="mother_name"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="clothes_size"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="place_of_birth"  attrs="{'invisible': [('customer', '=', False)]}" />
+                            <field name="date_of_birth"  attrs="{'invisible': [('customer', '=', False)]}"/>
+                            <field name="blood_type" attrs="{'invisible': [('customer', '=', False)]}" />
+                            <field name="marital_status" attrs="{'invisible': [('customer', '=', False)]}" />
+                            <field name="education" attrs="{'invisible': [('customer', '=', False)]}" />
+                        </group>
+                    </group>
+                </xpath>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+            </field>
+        </record>
+
+        <record id="travel_umroh_action" model="ir.actions.act_window">
+            <field name="name">Travel Umroh</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_travel_registration_tree"/>
+        </record>
+
+    </data>
+    
+
+</odoo>

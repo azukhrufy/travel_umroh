@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- <report
+        id="cetak_tagihan_jamaah" string="Customer Invoices"
+        model="account.invoice" name="tagihan.jamaah"
+        rml="aa_travel_umroh/report/tagihan_jamaah.rml"
+        auto="False" menu="False" /> -->
+
+    <report
+        id="cetak_tagihan_jamaah"
+        string=" Customer Invoices"
+        model="account.invoice" 
+        name="nti_travel_umroh.tagihan_jamaah"
+        file="nti_travel_umroh.tagihan_jamaah"
+        print_report_name="('Tagihan Jamaah %s' %(object.partner_id.name))" />
+
+
+
+    <!-- Customer Invoices Form View -->
+    
+    <record model="ir.ui.view" id="view_invoice_form_cetak">
+        <field name="name">account.invoice.form.cetak</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <button name="action_invoice_sent" position="after">
+                <button name="%(cetak_tagihan_jamaah)d" string="Cetak" type="action" state="done" class="btn-primary" />
+            </button>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="tagihan_jamaah" name="tagihan_jamaah">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div>
+                    <h2 class="text-center">Customer Invoices</h2><br/>
+                    <table class="table" border="0">
+                        <tr>
+                            <td><strong>Customer</strong></td>
+                            <td><span t-field="o.partner_id.name"/></td>
+                            <td><strong>NO</strong></td>
+                            <td><span t-field="o.number"/> </td>
+                            
+                        </tr>
+                        <tr>
+                            <td><strong>Address</strong></td>
+                            <td><span t-field="o.partner_id.street"/></td>
+                            <td><strong>Date</strong></td>
+                            <td><span t-field="o.date_invoice"/></td>
+                        </tr>
+                        <tr colspan="2">
+                            <td><strong>Phone</strong></td>
+                            <td><span t-field="o.partner_id.phone"/></td>
+                            <td><strong> </strong></td>
+                            <td> </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered" style="table-layout:auto">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Product</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-center">Price Unit</th>
+                                <th class="text-center">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <br/>
+                        <tbody>
+                            <t t-foreach="o.invoice_line_ids" t-as="l">
+                                <tr>
+                                    <td><span t-field="l.product_id"/></td>
+                                    <td><span t-field="l.quantity"/></td>
+                                    <td><span t-field="l.price_unit"/></td>
+                                    <td><span t-field="l.price_subtotal"/></td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td></td><td></td>
+                                <td><strong>Tax</strong></td>
+                                <td><span t-field="o.amount_tax"/></td>
+                            </tr>
+                            <tr>
+                                <td></td><td></td>
+                                <td><strong>Total</strong></td>
+                                <td><span t-field="o.amount_total"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <h5>Payment</h5>
+                    <table class="table table-bordered" style="table-layout:auto">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Method</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Amount</th>
+                                <!-- <th class="text-center">Subtotal</th> -->
+                            </tr>
+                        </thead>
+                        <br/>
+                        <tbody>
+                            <t t-foreach="o.payment_ids" t-as="l">
+                                <tr>
+                                    <td><span t-field="l.journal_id"/></td>
+                                    <td><span t-field="l.payment_date"/></td>
+                                    <td><span t-field="l.amount"/></td>
+                                    <!-- <td><span t-field="l.price_subtotal"/></td> -->
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h4 class="text-center">Mengetahui</h4><br/>
+                    <br/>
+                    <br/>
+                    <h4 class="text-center"><span t-field="o.user_id.name"/></h4><br/>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

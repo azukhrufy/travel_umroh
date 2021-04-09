@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+    
+    <!-- menu utama -->
+    <menuitem id="travel_menubar" name="Travel Umroh NTI"/>
+    <menuitem id="travel_masterdata" name="Master Data" parent="travel_menubar"/>
+    <menuitem id="travel_transaction" name="Transaction" parent="travel_menubar"/>
+    <menuitem id="travel_menuitem" name="Travel Umroh Menu" parent="travel_menubar"/>
+
+
+
+    <!-- sub menu master data -->
+    <menuitem
+            id="menu_product"
+            name="Produk"
+            parent="travel_masterdata"
+            action="sale.product_template_action"
+        />
+
+    <menuitem
+            id="menu_paket_produk"
+            name="Paket Produk"
+            parent="travel_masterdata"
+            action="mrp.mrp_bom_form_action"
+        />
+
+
+    <menuitem
+            id="menu_jamaah"
+            name="Jamaah"
+            parent="travel_masterdata"
+            action="base.action_partner_form"
+        />
+
+      <menuitem
+            id="menu_airlines"
+            name="Airlines"
+            parent="travel_masterdata"
+            action="nti_travel_umroh.action_partner_airlines_form"
+        />
+
+      <menuitem
+            id="menu_hotel"
+            name="Hotels"
+            parent="travel_masterdata"
+            action="nti_travel_umroh.action_partner_hotel_form"
+        />
+
+
+        <menuitem
+            id="menu_hotel"
+            name="Customer Invoice"
+            parent="travel_transaction"
+            action="nti_travel_umroh.action_invoiced_form"
+        />
+
+
+
+    <!-- sub menu Pendaftaran -->
+    <!-- <menuitem id="travel_regist_submenu" name="Customer Invoice" parent="travel_transaction" action="travel_umroh_action"/> -->
+
+
+    <!-- sub menu sales order -->
+    <menuitem id="sales_order_menu" name="Sales Order" parent="travel_transaction" action="sales_order_action"/>
+
+
+    <!-- sub menu Transaction -->
+    <menuitem id="paket_perjalanan_menu" name="Paket Perjalanan" parent="travel_transaction" action="paket_perjalanan_action"/>
+
+
+    <!-- sub menu paket perjalanan -->
+    <!-- <menuitem id="paket_perjalanan_menu" name="Paket Perjalanan" parent="travel_menuitem" action="paket_perjalanan_action"/> -->
+
+    
+    
+  </data>
+</odoo>

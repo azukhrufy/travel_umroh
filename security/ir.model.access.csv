@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+paket_perjalanan_user,paket.perjalanan.user,model_paket_perjalanan,,1,1,1,1
+paket_hotel_line_user,paket.hotel.line.user,model_paket_hotel_line,group_paket_perjalanan_user,1,1,1,1
+paket_pesawat_line_user,paket.pesawat.line.user,model_paket_pesawat_line,group_paket_perjalanan_user,1,1,1,1
+paket_acara_line_user,paket.acara.line.user,model_paket_acara_line,group_paket_perjalanan_user,1,1,1,1
+paket_peserta_line_user,paket.peserta.line.user,model_paket_peserta_line,group_paket_perjalanan_user,1,1,1,1
+
+access_sale_dokumen_line,access_sale_dokumen_line,model_sale_dokumen_line,base.group_user,1,1,1,1
+access_sale_passport_line,access_sale_passport_line,model_sale_passport_line,base.group_user,1,1,1,1
+
+access_hpp_line,access_hpp_line,model_hpp_line,base.group_user,1,1,1,1

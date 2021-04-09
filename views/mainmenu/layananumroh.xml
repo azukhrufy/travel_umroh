@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record model="ir.ui.view" id="view_partner_form_inherit_base">
+            <field name="name">res.partner.view.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- //notebook/page[1] -->
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page name="layananumroh" string="Layanan Umroh">
+                        <group>
+                            <field name="is_airlines"/>
+                            <field name="is_hotel"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_partner_airlines_form" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_airlines', '=', True)]</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        </record>
+
+        <record id="action_partner_hotel_form" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_hotel', '=', True)]</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+        </record>
+    </data>
+</odoo>

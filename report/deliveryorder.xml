@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+    <!-- Report Surat Jalan -->
+    <report
+        id="cetak_surat_jalan"
+        string=" Cetak Surat Jalan"
+        model="stock.picking" 
+        name="nti_travel_umroh.surat_jalan"
+        file="nti_travel_umroh.surat_jalan"
+        print_report_name="('Surat Jalan %s' %(object.name))" />
+    
+    
+    <!-- Stock Picking Form View -->
+    
+    <record model="ir.ui.view" id="view_picking_form_cetak">
+        <field name="name">stock.picking.form.cetak</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <button name="do_print_picking" position="replace"/>
+            <button name="%(stock.action_report_delivery)d" position="replace">
+                <button name="%(cetak_surat_jalan)d" string="Cetak" type="action" state="done" class="btn-primary" />
+            </button>
+        </field>
+    </record>
+    
+
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Report excel -->
+    <report
+        id="cetak_jamaah_xls"
+        string="List Jamaah"
+        model="paket.perjalanan" 
+        name="nti_travel_umroh.cetak_jamaah_xls"
+        file="Cetak Jamaah"
+        report_type="xlsx"
+        attachment_use="False"
+        print_report_name="('Report Jamaah %s' %(object.name))" />
+
+
+    <!-- <report
+    id="cetak_jamaah_xls" string="List Jamaah"
+    model="paket.perjalanan" report_type="xls"
+    name="print.jamaah.xls" file="print.jamaah.xls"
+    attachment_use="False"/> -->
+
+</odoo>
